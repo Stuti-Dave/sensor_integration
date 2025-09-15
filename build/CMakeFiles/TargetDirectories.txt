@@ -1,6 +1,6 @@
-/home/stuti-dave/data_sensor_tasks/sensor_integration/build/CMakeFiles/sensors_integration.dir
-/home/stuti-dave/data_sensor_tasks/sensor_integration/build/CMakeFiles/edit_cache.dir
-/home/stuti-dave/data_sensor_tasks/sensor_integration/build/CMakeFiles/rebuild_cache.dir
-/home/stuti-dave/data_sensor_tasks/sensor_integration/build/cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir
-/home/stuti-dave/data_sensor_tasks/sensor_integration/build/cmake/stm32cubemx/CMakeFiles/edit_cache.dir
-/home/stuti-dave/data_sensor_tasks/sensor_integration/build/cmake/stm32cubemx/CMakeFiles/rebuild_cache.dir
+/home/stutidave/sensor_integration/build/CMakeFiles/sensors_integration.dir
+/home/stutidave/sensor_integration/build/CMakeFiles/edit_cache.dir
+/home/stutidave/sensor_integration/build/CMakeFiles/rebuild_cache.dir
+/home/stutidave/sensor_integration/build/cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir
+/home/stutidave/sensor_integration/build/cmake/stm32cubemx/CMakeFiles/edit_cache.dir
+/home/stutidave/sensor_integration/build/cmake/stm32cubemx/CMakeFiles/rebuild_cache.dir

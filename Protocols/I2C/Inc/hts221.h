@@ -10,6 +10,6 @@
 #include "main.h"
 
 int8_t HTS221_Init(void);
-int8_t HTS221_ReadTempHum(volatile float *temperature, volatile float *humidity);
+int8_t HTS221_ReadTempHum(volatile double *temperature, volatile double *humidity);
 
 #endif /* INC_HTS221_H_ */

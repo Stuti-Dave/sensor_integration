@@ -44,9 +44,9 @@ int8_t HTS221_Init(void)
 }
 
 
-int8_t HTS221_ReadTempHum(volatile float *temperature, volatile float *humidity)
+int8_t HTS221_ReadTempHum(volatile double *temperature, volatile double *humidity)
 {
-    volatile uint8_t reg = 0x30 | 0x80;
+    uint8_t reg = 0x30 | 0x80;
     uint8_t calib[22] = {0};
 
     //Send register address (0x30)
@@ -108,8 +108,8 @@ int8_t HTS221_ReadTempHum(volatile float *temperature, volatile float *humidity)
         //return -1;
 
     // Linear interpolation
-    *temperature = (float)((((T_OUT - T0_OUT) * (T1_degC - T0_degC))/ (T1_OUT - T0_OUT)) + T0_degC);
-    *humidity = (float)((((H_T_OUT - H0_T0_OUT) * (H1_rh - H0_rh))/ (H1_T0_OUT - H0_T0_OUT)) + H0_rh);
+    *temperature = (double)((((T_OUT - T0_OUT) * (T1_degC - T0_degC))/ (T1_OUT - T0_OUT)) + T0_degC);
+    *humidity = (double)((((H_T_OUT - H0_T0_OUT) * (H1_rh - H0_rh))/ (H1_T0_OUT - H0_T0_OUT)) + H0_rh);
 
     return 0;
 }
