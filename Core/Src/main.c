@@ -47,7 +47,7 @@ I2C_HandleTypeDef hi2c1;
 I2C_HandleTypeDef hi2c2;
 
 /* USER CODE BEGIN PV */
-float temp=0.0f, hum=0.0f, press=0.0f;
+double temp=0.0, hum=0.0, press=0.0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
