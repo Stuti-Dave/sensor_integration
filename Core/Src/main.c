@@ -96,23 +96,25 @@ int main(void)
   MX_I2C1_Init();
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
+
+  // Initialize LCD and Sensors
   lcd_init();
+  lcd_clear();
+  lcd_set_cursor(0, 0);
+  
   if(HTS221_Init()==-1)
   {
-	  lcd_clear();
-	  lcd_set_cursor(0, 0);
 	  lcd_print("Error: HTS221");
   }
   else if(LPS22HB_Init()==-1)
   {
-	  lcd_clear();
-	  lcd_set_cursor(0, 0);
+
 	  lcd_print("Error: LPS22HB");
   }
   else
   {
-	  lcd_clear();
-	  lcd_set_cursor(0, 0);
+    lcd_clear();
+    lcd_set_cursor(0, 0);
 	  lcd_print("Initialized");
 	  HAL_Delay(2000);
   }
@@ -122,26 +124,33 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
-	  int ret;
+    // Read temperature, humidity and pressure
+    int ret;
     ret = HTS221_ReadTempHum(&temp, &hum);
     if (ret != 0){
       lcd_clear();
       lcd_set_cursor(0,0);
       lcd_print("HTS read failed");
-      return 0;
+      // Wait and retry until sensor recovers
+      while (HTS221_ReadTempHum(&temp, &hum) != 0) {
+        HAL_Delay(1000);
+      }
     }
-
-	  press=LPS22HB_ReadPressure();
-	  if (press < 0){
+    press = LPS22HB_ReadPressure();
+    if (press < 0) {
       lcd_clear();
       lcd_set_cursor(0,0);
       lcd_print("LPS read failed");
-      return 0;
+      // Wait and retry until sensor recovers
+      while ((press = LPS22HB_ReadPressure()) < 0) {
+        HAL_Delay(1000);
+      }
     }
+
+    // Display data on LCD
     char line1[20], line2[20];
-	  sprintf(line1, "T:%.1fC H:%.0f%%", temp, hum);
-	  sprintf(line2, "P:%.1fhPa", press);
+    sprintf(line1, "T:%.1fC H:%.1f%%", temp, hum);
+    sprintf(line2, "P:%.1fhPa", press);
 
 	  lcd_clear();
 	  lcd_set_cursor(0, 0);
@@ -150,14 +159,16 @@ int main(void)
 	  lcd_print(line2);
 
 	  HAL_Delay(5000);
-	  lcd_clear();
-	  lcd_print("-");
-	  HAL_Delay(5000);
-	  lcd_clear();
+    lcd_clear();
+    lcd_print("Loading...");
+    HAL_Delay(5000);
+    lcd_clear();
+    /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
   }
-  /* USER CODE END 3 */
   return 0;
+  /* USER CODE END 3 */
 }
 
 /**
@@ -319,6 +330,10 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOB_CLK_ENABLE();
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOC_CLK_ENABLE();
+  __HAL_RCC_GPIOD_CLK_ENABLE();
+  __HAL_RCC_GPIOE_CLK_ENABLE();
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
 
