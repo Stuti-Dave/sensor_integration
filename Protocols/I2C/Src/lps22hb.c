@@ -4,8 +4,10 @@
  *  Created on: Jul 17, 2025
  *      Author: 167297
  */
+#include "stm32l4xx_hal.h"
+#include <stdint.h>
+#include <stdio.h>
 #include "lps22hb.h"
-//#include "stm32f4xx_hal.h"
 
 extern I2C_HandleTypeDef hi2c2;
 

@@ -4,7 +4,9 @@
  *  Created on: Jul 17, 2025
  *      Author: 167297
  */
-
+#include "stm32l4xx_hal.h"
+#include <stdint.h>
+#include <stdio.h>
 #include"hts221.h"
 
 extern I2C_HandleTypeDef hi2c2;
@@ -44,7 +46,7 @@ int8_t HTS221_Init(void)
 }
 
 
-int8_t HTS221_ReadTempHum(volatile double *temperature, volatile double *humidity)
+int8_t HTS221_ReadTempHum(volatile float *temperature, volatile float *humidity)
 {
     uint8_t reg = 0x30 | 0x80;
     uint8_t calib[22] = {0};
@@ -108,8 +110,8 @@ int8_t HTS221_ReadTempHum(volatile double *temperature, volatile double *humidit
         //return -1;
 
     // Linear interpolation
-    *temperature = (double)((((T_OUT - T0_OUT) * (T1_degC - T0_degC))/ (T1_OUT - T0_OUT)) + T0_degC);
-    *humidity = (double)((((H_T_OUT - H0_T0_OUT) * (H1_rh - H0_rh))/ (H1_T0_OUT - H0_T0_OUT)) + H0_rh);
+    *temperature = (float)((((T_OUT - T0_OUT) * (T1_degC - T0_degC))/ (T1_OUT - T0_OUT)) + T0_degC);
+    *humidity = (float)((((H_T_OUT - H0_T0_OUT) * (H1_rh - H0_rh))/ (H1_T0_OUT - H0_T0_OUT)) + H0_rh);
 
     return 0;
 }
