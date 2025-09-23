@@ -1,21 +1,26 @@
-/*
- * lps22hb.c
- *
- *  Created on: Jul 17, 2025
- *      Author: 167297
- */
+/**
+  ******************************************************************************
+  * @file           : lps22hb.c
+  * @brief          : Pressure sensor APIs
+  ******************************************************************************
+  */
+
+/* Includes ------------------------------------------------------------------*/
 #include "stm32l4xx_hal.h"
 #include <stdint.h>
 #include <stdio.h>
 #include "lps22hb.h"
 
+/* Private Variables --------------------------------------------------------*/
 extern I2C_HandleTypeDef hi2c2;
 
-#define LPS22HB_ADDR         (0x5D << 1)  // 0xBA
-#define LPS22HB_WHO_AM_I     0x0F
-#define LPS22HB_CTRL_REG1    0x10
-#define LPS22HB_WHO_AM_I_VAL 0xB1
+#define LPS22HB_ADDR         (0x5D << 1)    // 7-bit address shifted(0xBA write, 0xBB read)
+#define LPS22HB_WHO_AM_I     0x0F           // Sensor identification register
+#define LPS22HB_CTRL_REG1    0x10           // Control register 1
+#define LPS22HB_WHO_AM_I_VAL 0xB1           // Expected WHO_AM_I value
 
+/* Private FUnctions -------------------------------------------------------*/
+// Initialize LPS22HB sensor
 uint8_t LPS22HB_Init(void)
 {
     uint8_t reg;
@@ -42,6 +47,7 @@ uint8_t LPS22HB_Init(void)
     return 0;
 }
 
+// Read pressure in hPa
 float LPS22HB_ReadPressure(void)
 {
     uint8_t reg = 0x28 | 0x80;
@@ -64,4 +70,3 @@ float LPS22HB_ReadPressure(void)
 
     return pressure_hPa;
 }
-
