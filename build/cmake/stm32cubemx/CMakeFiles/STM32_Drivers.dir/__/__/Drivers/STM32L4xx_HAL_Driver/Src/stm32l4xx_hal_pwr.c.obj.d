@@ -1,0 +1,32 @@
+cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr.c.obj: \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr.c \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Core/Inc/stm32l4xx_hal_conf.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4xx.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l475xx.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/CMSIS/Include/core_cm4.h \
+ /usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/CMSIS/Include/cmsis_version.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/CMSIS/Include/cmsis_compiler.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/CMSIS/Include/cmsis_gcc.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/CMSIS/Include/mpu_armv7.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32L4xx/Include/system_stm32l4xx.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
+ /usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc_ex.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_gpio.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_gpio_ex.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_cortex.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_exti.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash_ex.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash_ramfunc.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_i2c.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_i2c_ex.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr_ex.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/cmake/stm32cubemx/../../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h

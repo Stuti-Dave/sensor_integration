@@ -1,0 +1,2 @@
+CMakeFiles/sensors_integration.dir/startup_stm32l475xx.s.obj: \
+ /home/stuti-dave/data_sensor_tasks/sensor_integration/startup_stm32l475xx.s

@@ -1,22 +1,23 @@
-/*
- * lcd.c
- *
- *  Created on: Jul 17, 2025
- *      Author: 167297
- */
+/**
+  ******************************************************************************
+  * @file           : lcd.c
+  * @brief          : LCD 16x2 Display APIs
+  ******************************************************************************
+  */
+
+/* Includes ------------------------------------------------------------------*/
 #include "lcd.h"
 
+/* Private Variables --------------------------------------------------------*/
 extern I2C_HandleTypeDef hi2c1;
 
-// LCD I2C Constants
 const uint8_t lcd_i2c_addr  = (0x27 << 1);  // 0x4E
 const uint8_t lcd_backlight = 0x08;         // Backlight
 const uint8_t lcd_enable 	= 0x04;         // Enable
 const uint8_t lcd_rw     	= 0x02;         // Read/Write
 const uint8_t lcd_rs     	= 0x01;         // Register Select
 
-
-//lcd
+/* Private FUnctions -------------------------------------------------------*/
 void lcd_send(uint8_t data, uint8_t mode) {
     uint8_t high_nibble = data & 0xF0;
     uint8_t low_nibble = (data << 4) & 0xF0;
@@ -95,7 +96,5 @@ void lcd_print(char *str) {
 
 void lcd_clear(void) {
     lcd_send_cmd(0x01);   // Clear display command
-    HAL_Delay(2);         // Datasheet says 1.52ms; 2ms is safe
+    HAL_Delay(2);
 }
-
-
