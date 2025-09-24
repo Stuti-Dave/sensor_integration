@@ -6,6 +6,7 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
+#include <stdint.h>
 #include "lcd.h"
 
 /* Private Variables --------------------------------------------------------*/
@@ -18,6 +19,8 @@ const uint8_t lcd_rw     	= 0x02;         // Read/Write
 const uint8_t lcd_rs     	= 0x01;         // Register Select
 
 /* Private FUnctions -------------------------------------------------------*/
+
+// LCD data transfer function
 void lcd_send(uint8_t data, uint8_t mode) {
     uint8_t high_nibble = data & 0xF0;
     uint8_t low_nibble = (data << 4) & 0xF0;
@@ -34,6 +37,7 @@ void lcd_send(uint8_t data, uint8_t mode) {
     HAL_Delay(1);
 }
 
+// LCD command and data functions
 void lcd_send_cmd(uint8_t cmd) {
     lcd_send(cmd, 0x00);
 }
@@ -42,6 +46,7 @@ void lcd_send_data(uint8_t data) {
     lcd_send(data, lcd_rs);
 }
 
+// LCD initialization
 void lcd_init(void) {
     HAL_Delay(50);  // Wait for LCD to power up
 
@@ -63,6 +68,8 @@ void lcd_init(void) {
     lcd_send_cmd(0x06);  // Entry mode set
     lcd_send_cmd(0x0C);  // Display on, cursor off
 }
+
+// Set cursor position
 void lcd_set_cursor(uint8_t row, uint8_t col) {
     uint8_t address;
 
@@ -84,17 +91,20 @@ void lcd_set_cursor(uint8_t row, uint8_t col) {
             break;
     }
 
-    lcd_send_cmd(0x80 | address);  // Set DDRAM address
+    lcd_send_cmd(0x80 | address);  // Set 
 }
 
-
+// Print string on LCD
 void lcd_print(char *str) {
     while (*str) {
         lcd_send_data(*str++);
     }
 }
 
+// Clear LCD display
 void lcd_clear(void) {
     lcd_send_cmd(0x01);   // Clear display command
+    HAL_Delay(2);
+    lcd_set_cursor(0,0);   // Move cursor to initial position
     HAL_Delay(2);
 }
