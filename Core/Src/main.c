@@ -108,7 +108,6 @@ int main(void)
   // Initialize LCD and Sensors
   lcd_init();
   lcd_clear();
-  lcd_set_cursor(0, 0);
   
   if(HTS221_Init()==-1)
   {
@@ -122,7 +121,6 @@ int main(void)
   else
   {
     lcd_clear();
-    lcd_set_cursor(0, 0);
 	  lcd_print("Initialized");
 	  HAL_Delay(2000);
   }
@@ -138,7 +136,6 @@ int main(void)
     printf("Temp: %.2f, Hum: %.2f\n", temp, hum); // Debug print
     if (ret != 0){
       lcd_clear();
-      lcd_set_cursor(0,0);
       lcd_print("HTS read failed");
       // Wait and retry until sensor recovers
       while (HTS221_ReadTempHum(&temp, &hum) != 0) {
@@ -148,34 +145,28 @@ int main(void)
     press = LPS22HB_ReadPressure();
     if (press < 0) {
       lcd_clear();
-      lcd_set_cursor(0,0);
       lcd_print("LPS read failed");
       // Wait and retry until sensor recovers
       while ((press = LPS22HB_ReadPressure()) < 0) {
         lcd_clear();
-        lcd_set_cursor(0,0);
         lcd_print("LPS read failed");
         HAL_Delay(1000);
       }
     }
 
-    // Display data on LCD
+    // Fill the line buffers
     char line1[32], line2[32];
-    snprintf(line1,sizeof(line1),"T:%0.1fC H:%d%%", temp, (int)hum);
-    snprintf(line2, sizeof(line2),"P:%dhPa", (int)press);
+    snprintf(line1,sizeof(line1),"T:%0.1fC H:%.2f%%", temp, hum);
+    snprintf(line2, sizeof(line2),"P:%.2fhPa", press);
 
-    printf("%s\n%s\n", line1, line2); // Debug print
-
+    // Display data on LCD
 	  lcd_clear();
-	  lcd_set_cursor(0, 0);
+    lcd_set_cursor(0, 0);
 	  lcd_print(line1);
 	  lcd_set_cursor(1, 0);
 	  lcd_print(line2);
 
-	  HAL_Delay(5000);
-    lcd_clear();
-    lcd_print("Loading");
-    HAL_Delay(5000);
+	  HAL_Delay(2500);
     lcd_clear();
     /* USER CODE END WHILE */
 

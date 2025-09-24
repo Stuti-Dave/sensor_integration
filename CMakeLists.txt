@@ -45,16 +45,18 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user sources here
-      Protocols/I2C/Src/hts221.c
-      Protocols/I2C/Src/lps22hb.c
-      Protocols/I2C/Src/lcd.c
+      lib/sensors/hts221/src/hts221.c
+      lib/sensors/lps22hb/src/lps22hb.c
+      lib/display/16x2_lcd/src//lcd.c
 
 )
 
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined include paths
-    Protocols/I2C/Inc/
+    lib/sensors/hts221/inc
+    lib/sensors/lps22hb/inc
+    lib/display/16x2_lcd/inc
 )
 
 # Add project symbols (macros)

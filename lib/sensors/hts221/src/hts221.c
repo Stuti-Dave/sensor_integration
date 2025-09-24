@@ -1,14 +1,17 @@
-/*
- * hts221.c
- *
- *  Created on: Jul 17, 2025
- *      Author: 167297
- */
+/**
+  ******************************************************************************
+  * @file           : hts221.c
+  * @brief          : Humidity and Temperature sensor reading APIs
+  ******************************************************************************
+  */
+
+/* Includes ------------------------------------------------------------------*/
 #include "stm32l4xx_hal.h"
 #include <stdint.h>
 #include <stdio.h>
 #include"hts221.h"
 
+/* Private Variables --------------------------------------------------------*/
 extern I2C_HandleTypeDef hi2c2;
 
 // HTS221 Sensor Variables
@@ -18,7 +21,9 @@ const uint8_t hts_ctrl_reg1 = 0x20;
 const uint8_t hts_hum_out_l = 0x28;
 const uint8_t hts_temp_out_l= 0x2A;
 
-//HTS221 helper functions
+/* Private FUnctions -------------------------------------------------------*/
+
+// Sensor Initialization
 int8_t HTS221_Init(void)
 {
     uint8_t reg = hts_who_am_i;
@@ -45,17 +50,17 @@ int8_t HTS221_Init(void)
     return 0;
 }
 
-
+// Sensor data reading
 int8_t HTS221_ReadTempHum(volatile float *temperature, volatile float *humidity)
 {
     uint8_t reg = 0x30 | 0x80;
     uint8_t calib[22] = {0};
 
-    //Send register address (0x30)
+    // Send register address (0x30)
     if (HAL_I2C_Master_Transmit(&hi2c2, hts_addr, &reg, 1, HAL_MAX_DELAY) != HAL_OK)
         return reg;
 
-    //Read 22 bytes of calibration data
+    // Read 22 bytes of calibration data
     if (HAL_I2C_Master_Receive(&hi2c2, hts_addr, calib, 22, HAL_MAX_DELAY) != HAL_OK)
         return -1;
 
@@ -96,18 +101,9 @@ int8_t HTS221_ReadTempHum(volatile float *temperature, volatile float *humidity)
     if (HAL_I2C_Master_Receive(&hi2c2, hts_addr, hum_raw, 2, HAL_MAX_DELAY) != HAL_OK)
         return -1;
 
-    /*
-    if (HAL_I2C_Master_Transmit(&hi2c2, HTS221_ADDR, &reg, 1, HAL_MAX_DELAY) != HAL_OK)
-        return -1;
-    if (HAL_I2C_Master_Receive(&hi2c2, HTS221_ADDR, hum_raw, 2, HAL_MAX_DELAY) != HAL_OK)
-        return -1;*/
-
     // Combine MSB and LSB
     int16_t T_OUT = (int16_t)(temp_raw[0] | (temp_raw[1] << 8));
     int16_t H_T_OUT = (int16_t)(hum_raw[0] | (hum_raw[1] << 8));
-
-    //if ((T1_OUT - T0_OUT) == 0 || (H1_T0_OUT - H0_T0_OUT) == 0)
-        //return -1;
 
     // Linear interpolation
     *temperature = (float)((((T_OUT - T0_OUT) * (T1_degC - T0_degC))/ (T1_OUT - T0_OUT)) + T0_degC);
@@ -115,4 +111,3 @@ int8_t HTS221_ReadTempHum(volatile float *temperature, volatile float *humidity)
 
     return 0;
 }
-
